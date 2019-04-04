@@ -30,3 +30,7 @@
   unused-packages = true
 
 
+
+[[constraint]]
+  name = "github.com/sclevine/agouti"
+  version = "3.0.0"
