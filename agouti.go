@@ -8,10 +8,10 @@ import (
 // http://todomvc.com/examples/react/
 func main() {
 
-	driver := agouti.ChromeDriver()
-	// driver := agouti.ChromeDriver(
-		// agouti.ChromeOptions("args", []string{"--headless", "--disable-gpu", "--no-sandbox"}),
-	// )
+	// driver := agouti.ChromeDriver()
+	driver := agouti.ChromeDriver(
+		agouti.ChromeOptions("args", []string{"--headless", "--disable-gpu", "--no-sandbox"}),
+	)
 		
 	if err := driver.Start(); err != nil {
 		log.Fatal("Failed to start driver:", err)
@@ -22,30 +22,30 @@ func main() {
 		log.Fatal("Failed to open page:", err)
 	  }
 
-	  if err := page.Navigate("https://www.prakard.com"); err != nil {
+	  if err := page.Navigate("http://100.25.36.252/"); err != nil {
 		log.Fatal("Failed to navigate:", err)
 	  }
 
-	  // Click Link
-	  if err := page.FindByXPath(`//*[@id="nav-main"]/li[10]/a`).Click(); err != nil {
-		log.Fatal("Failed to click:", err)
-	  }
+	  // // Click Link
+	  // if err := page.FindByXPath(`//*[@id="nav-main"]/li[10]/a`).Click(); err != nil {
+		// log.Fatal("Failed to click:", err)
+	  // }
 	  // Input username
-	  input := page.FindByXPath(`//*[@id="username"]`)
+	  input := page.FindByXPath(`//*[@id="todo-form"]/div/form/div/input`)
 	  log.Println(input)
 
-	  if err := input.Fill("stopkung"); err != nil {
+	  if err := input.Fill("Chrome Robots naja"); err != nil {
 		  log.Fatal("Input username:", err)
 	  }
-	  // input password
-	  if err := page.FindByXPath(`//*[@id="password"]`).Fill("Stop1234"); err != nil {
-		log.Fatal("Input password:", err)
-	}
+	//   // input password
+	//   if err := page.FindByXPath(`//*[@id="password"]`).Fill("Stop1234"); err != nil {
+	// 	log.Fatal("Input password:", err)
+	// }
 	// click submit
-		if err := page.FindByButton(`Login`).Click(); err != nil {
-			log.Fatal("Login:", err)
+		if err := page.FindByButton(`Add`).Click(); err != nil {
+			log.Fatal("Add:", err)
 		}
-
+		fmt.Println("Flow success")
 
 	  
 	
